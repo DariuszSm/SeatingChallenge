@@ -20,7 +20,7 @@ public class MazeManip {
             ArrayList<Student> studentRow = oldSeating.get(row);
             seating.add(new ArrayList<Student>());
             ArrayList<Student> currentRow = seating.get(seating.size()-1);
-            for (int i = 0; i < 2; i++) {
+            for (int i = 1; i >= 0; i--) {
                 for (int stud = i; stud < studentRow.size(); stud += 2) {
                     currentRow.add(studentRow.get(stud));
                     currentRow.get(currentRow.size()-1).setNewSeat(currSeat);
@@ -38,16 +38,16 @@ public class MazeManip {
                 currentRow.add(emptyInd+1, currentRow.remove(emptyInd));
             }
 
-            // swap first and last seat of each row
-            Student swapStudent = currentRow.get(0);
-            int swapSeat = swapStudent.getNewSeat();
-            currentRow.set(0, currentRow.remove(currentRow.size()-1));
-
-            // seat # assignment
-            swapStudent.setNewSeat(currentRow.get(0).getNewSeat());
-            currentRow.get(0).setNewSeat(swapSeat);
-
-            currentRow.add(swapStudent);
+//            // swap first and last seat of each row
+//            Student swapStudent = currentRow.get(0);
+//            int swapSeat = swapStudent.getNewSeat();
+//            currentRow.set(0, currentRow.remove(currentRow.size()-1));
+//
+//            // seat # assignment
+//            swapStudent.setNewSeat(currentRow.get(0).getNewSeat());
+//            currentRow.get(0).setNewSeat(swapSeat);
+//
+//            currentRow.add(swapStudent);
         }
 
         return seating;
