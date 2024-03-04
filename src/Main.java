@@ -38,6 +38,16 @@ public class Main {
             }
         }
 
+        System.out.println("_________________");
+
+        newSeating = MazeManip.getShuffledMaze(oldSeating);
+
+        for (ArrayList<Student> row : newSeating) {
+            for (Student stud : row) {
+                System.out.println(stud);
+                stud.getNeighbors(students);
+            }
+        }
 
 
     }

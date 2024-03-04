@@ -15,10 +15,10 @@ public class Student {
 
     public ArrayList<Student> getNeighbors(HashMap<Integer, Student> students) {
         ArrayList<Student> seatNeighbors = new ArrayList<Student>();
-        if (students.get(origSeat-1) != null || (!students.get(origSeat-1).getName().equals("N/A"))) {
+        if (students.get(origSeat-1) != null && (!students.get(origSeat-1).getName().equals("N/A"))) {
             seatNeighbors.add(students.get(origSeat-1));
         }
-        if (students.get(origSeat+1) != null || (!students.get(origSeat+1).getName().equals("N/A"))) {
+        if (students.get(origSeat+1) != null && (!students.get(origSeat+1).getName().equals("N/A"))) {
             seatNeighbors.add(students.get(origSeat+1));
         }
         return seatNeighbors;

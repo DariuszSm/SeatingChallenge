@@ -27,9 +27,27 @@ public class MazeManip {
                     currSeat++;
                 }
             }
+            // seat 5 specific assignment
+            int exchangeSeat = 5;
             if (row == 0) {
-                currentRow.set(4, currentRow.remove(findEmptySeatInd(currentRow)));
+                int emptyInd = findEmptySeatInd(currentRow);
+                Student moveStud = currentRow.get(exchangeSeat-1);
+                moveStud.setNewSeat(emptyInd+1);
+                currentRow.set(exchangeSeat-1, currentRow.remove(emptyInd));
+                currentRow.get(exchangeSeat-1).setNewSeat(exchangeSeat);
+                currentRow.add(emptyInd+1, currentRow.remove(emptyInd));
             }
+
+            // swap first and last seat of each row
+            Student swapStudent = currentRow.get(0);
+            int swapSeat = swapStudent.getNewSeat();
+            currentRow.set(0, currentRow.remove(currentRow.size()-1));
+
+            // seat # assignment
+            swapStudent.setNewSeat(currentRow.get(0).getNewSeat());
+            currentRow.get(0).setNewSeat(swapSeat);
+
+            currentRow.add(swapStudent);
         }
 
         return seating;
